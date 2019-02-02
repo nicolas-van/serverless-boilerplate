@@ -24,6 +24,7 @@
     "serverless-offline": "^4.1.4"
   },
   "scripts": {
+    "test": "echo there is no tests yet",
     "serve": "sls offline start"
   },
   "repository": {
