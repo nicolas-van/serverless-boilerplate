@@ -1,0 +1,41 @@
+{
+  "name": "serverless-boilerplate",
+  "version": "0.1.0",
+  "description": "My personal serverless boilerplate",
+  "main": "index.js",
+  "dependencies": {
+    "aws-sdk": "^2.391.0",
+    "dotenv": "^6.2.0",
+    "koa": "^2.6.2",
+    "koa-bodyparser": "^4.2.1",
+    "koa-nunjucks-2": "^3.0.2",
+    "koa-router": "^7.4.0",
+    "lodash": "^4.17.11",
+    "marked": "^0.6.0",
+    "nunjucks": "^3.1.7",
+    "nunjucks-markdown": "^2.0.1",
+    "serverless-http": "^1.9.0",
+    "sharp": "^0.21.3",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "axios": "^0.18.0",
+    "serverless": "^1.36.1",
+    "serverless-domain-manager": "^2.6.12",
+    "serverless-dynamodb-local": "0.2.30",
+    "serverless-offline": "^4.1.4"
+  },
+  "scripts": {
+    "serve": "sls offline start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicolas-van/serverless-boilerplate.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicolas-van/serverless-boilerplate/issues"
+  },
+  "homepage": "https://github.com/nicolas-van/serverless-boilerplate#readme"
+}

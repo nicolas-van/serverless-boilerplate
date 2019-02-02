@@ -1,0 +1,82 @@
+
+service: serverless-boilerplate-service
+
+app: serverless-boilerplate-app
+tenant: nicolasvan
+provider:
+  name: aws
+  region: eu-west-1
+  stage: ${opt:stage, 'dev'}
+  runtime: nodejs8.10
+  profile: becode_serverless
+  memorySize: 128
+  timeout: 10
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource:
+        - { "Fn::GetAtt": ["UsersDynamoDBTable", "Arn" ] }
+  environment:
+    EXAMPLE_TABLE: ${self:custom.exampleTable}
+
+plugins:
+  - serverless-domain-manager
+  - serverless-dynamodb-local
+  - serverless-offline
+
+custom:
+  stages:
+    dev:
+      domain: serverless-boilerplate-dev.example.com
+      domainEnabled: true
+    production:
+      domain: serverless-boilerplate.example.com
+      domainEnabled: true
+  exampleTable: '${self:service}-example-${self:provider.stage}'
+  dynamodb:
+    start:
+      migrate: true
+      seed: true
+  customDomain:
+    domainName: ${self:custom.stages.${self:provider.stage}.domain}
+    certificateName: '*.becode.xyz'
+    basePath: ''
+    stage: ${self:provider.stage}
+    createRoute53Record: true
+    enabled: ${self:custom.stages.${self:provider.stage}.domainEnabled}
+
+functions:
+  app:
+    handler: handler.app
+    events:
+        - http: ANY /
+        - http: 'ANY {proxy+}'
+
+resources:
+  Resources:
+    UsersDynamoDBTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: id
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: id
+            KeyType: HASH
+        # It is usually preferable to use the PAY_PER_REQUEST billing
+        # mode instead of specifying a provisioned throughput.
+        # Unfortunately the serverless-dynamodb-local module do not support
+        # it yet. So in the mean we keep using provisioned capacity.
+        # BillingMode: PAY_PER_REQUEST
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5
+        TableName: ${self:custom.exampleTable}
