@@ -1,12 +1,8 @@
 language: node_js
 node_js:
   - "node"
-install:
-  - npm install
-before_script:
-  - npm install -g serverless
 deploy:
   provider: script
-  script: sls deploy
+  script: deploy.sh
   on:
     branch: master
