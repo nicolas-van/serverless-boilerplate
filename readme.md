@@ -22,7 +22,7 @@ npm run server
 
 ## How to deploy
 
-You need to have setup the appropriate user from AWS and stored it in your `~/.aws/credentials` under the profile `serverless`.
+[Here are the necessary AWS permissions.](./aws-permissions.json)
 
 `dev` deployment:
 
