@@ -3,6 +3,10 @@ node_js:
   - "node"
 deploy:
   - provider: script
-    script: sh deploy.sh
+    script: sh deploy.sh production
     on:
       branch: master
+  - provider: script
+    script: sh deploy.sh dev
+    on:
+      branch: develop
