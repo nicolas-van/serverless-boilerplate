@@ -25,11 +25,13 @@ You need to have setup the appropriate user from AWS and stored it in your `~/.a
 `dev` deployment:
 
 ```bash
+sls create_domain
 sls deploy
 ```
 
 `production` deployment:
 
 ```bash
+sls create_domain --stage=production
 sls deploy --stage=production
 ```

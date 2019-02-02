@@ -2,13 +2,13 @@
 service: serverless-boilerplate-service
 
 app: serverless-boilerplate-app
-tenant: nicolasvan
+tenant: ${env:TENANT}
 provider:
   name: aws
   region: eu-west-1
   stage: ${opt:stage, 'dev'}
   runtime: nodejs8.10
-  profile: becode_serverless
+  profile: ${env:AWS_PROFILE}
   memorySize: 128
   timeout: 10
   iamRoleStatements:
@@ -26,6 +26,7 @@ provider:
     EXAMPLE_TABLE: ${self:custom.exampleTable}
 
 plugins:
+  - serverless-dotenv-plugin
   - serverless-domain-manager
   - serverless-dynamodb-local
   - serverless-offline
@@ -33,11 +34,13 @@ plugins:
 custom:
   stages:
     dev:
-      domain: serverless-boilerplate-dev.example.com
+      domain: ${env:DEV_DOMAIN}
       domainEnabled: true
+      certificateName: ${env:DEV_CERTIFICATE_NAME}
     production:
-      domain: serverless-boilerplate.example.com
+      domain: ${env:PROD_DOMAIN}
       domainEnabled: true
+      certificateName: ${env:PROD_CERTIFICATE_NAME}
   exampleTable: '${self:service}-example-${self:provider.stage}'
   dynamodb:
     start:
@@ -45,7 +48,7 @@ custom:
       seed: true
   customDomain:
     domainName: ${self:custom.stages.${self:provider.stage}.domain}
-    certificateName: '*.becode.xyz'
+    certificateName: ${self:custom.stages.${self:provider.stage}.certificateName}
     basePath: ''
     stage: ${self:provider.stage}
     createRoute53Record: true

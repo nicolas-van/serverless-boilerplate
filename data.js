@@ -4,10 +4,8 @@ Data access layer
 
 
 const AWS = require('aws-sdk');
-const assert = require('http-assert');
 const uuidv4 = require('uuid/v4');
 const _ = require("lodash");
-const sharp = require("sharp");
 
 /**
  * Tables in Dynamodb
