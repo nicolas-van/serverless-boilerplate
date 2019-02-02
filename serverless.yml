@@ -5,10 +5,9 @@ app: serverless-boilerplate-app
 tenant: ${env:TENANT}
 provider:
   name: aws
-  region: eu-west-1
+  region: ${env:AWS_REGION}
   stage: ${opt:stage, 'dev'}
   runtime: nodejs8.10
-  profile: ${env:AWS_PROFILE}
   memorySize: 128
   timeout: 10
   iamRoleStatements:
@@ -53,6 +52,9 @@ custom:
     stage: ${self:provider.stage}
     createRoute53Record: true
     enabled: ${self:custom.stages.${self:provider.stage}.domainEnabled}
+  dotenv:
+    include:
+      - NONE
 
 functions:
   app:
