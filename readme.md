@@ -1,6 +1,7 @@
 # Serverless Boilerplate
 
-[![Build Status](https://travis-ci.org/nicolas-van/serverless-boilerplate.svg?branch=master)](https://travis-ci.org/nicolas-van/serverless-boilerplate)
+`master`: [![Build Status](https://travis-ci.org/nicolas-van/serverless-boilerplate.svg?branch=master)](https://travis-ci.org/nicolas-van/serverless-boilerplate)
+`develop`: [![Build Status](https://travis-ci.org/nicolas-van/serverless-boilerplate.svg?branch=develop)](https://travis-ci.org/nicolas-van/serverless-boilerplate)
 
 My personal serverless boilerplate
 
