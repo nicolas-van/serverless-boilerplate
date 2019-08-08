@@ -1,6 +1,7 @@
 # Serverless Boilerplate
 
-[![Build Status](https://travis-ci.org/nicolas-van/serverless-boilerplate.svg?branch=master)](https://travis-ci.org/nicolas-van/serverless-boilerplate)
+`master`: [![Build Status](https://travis-ci.org/nicolas-van/serverless-boilerplate.svg?branch=master)](https://travis-ci.org/nicolas-van/serverless-boilerplate)
+`develop`: [![Build Status](https://travis-ci.org/nicolas-van/serverless-boilerplate.svg?branch=develop)](https://travis-ci.org/nicolas-van/serverless-boilerplate)
 
 My personal serverless boilerplate
 
@@ -22,7 +23,7 @@ npm run server
 
 ## How to deploy
 
-You need to have setup the appropriate user from AWS and stored it in your `~/.aws/credentials` under the profile `serverless`.
+[Here are the necessary AWS permissions.](./aws-permissions.json)
 
 `dev` deployment:
 
