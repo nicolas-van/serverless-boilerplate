@@ -10,7 +10,7 @@
     "koa-nunjucks-2": "^3.0.2",
     "koa-router": "^7.4.0",
     "lodash": "^4.17.11",
-    "marked": "^0.6.0",
+    "marked": "^4.0.10",
     "nunjucks": "^3.1.7",
     "nunjucks-markdown": "^2.0.1",
     "serverless-http": "^1.9.0",
